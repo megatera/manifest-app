@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const databaseController = require('./databaseController');
+const { restart } = require('nodemon');
 
 const app = express();
 const PORT = 3000;
@@ -17,17 +18,30 @@ app.get('/inventory?:category',
     return res.status(200).json(res.locals.inventory);
   });
 
-app.post('/trip?:user', 
-  databaseController.createTrip,
+app.get('/trips?:user_id', 
+  databaseController.getTrips,
   (req, res) => {
-    return res.status(200).json({});
+    return res.status(200).json(res.locals.trips);
   });
 
-// app.post('list', 
-//   databaseController.updateList,
-//   (req, res) => {
-//     return res.status(200).json({});
-//   });
+app.post('/trips', 
+databaseController.addTrip,
+  (req, res) => {
+    return res.status(200).json(res.locals.trips);
+  });
+
+app.get('/list', 
+  databaseController.getList,
+  (req, res) => {
+    return res.status(200).json(res.locals.list);
+  }
+);
+
+app.post('/list', 
+  databaseController.updateList,
+  (req, res) => {
+    return res.status(200).json(res.locals.list);
+  });
 
 // route handler to respond with main app
 app.get('/', (req, res) => {

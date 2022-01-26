@@ -51,6 +51,14 @@ module.exports = {
         target: 'http://localhost:3000',
         secure: false,
       },
+      '/trips/**': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+      '/list/**': {
+        target: 'http://localhost:3000',
+        secure: false,
+      }
     }
   }
 }
