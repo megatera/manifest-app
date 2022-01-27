@@ -74,7 +74,7 @@ class Trips extends Component {
       <div className="tripContainer">
         <h3>Upcoming Trips</h3>
         {tripBoxes}
-        <input type="text" id="newDestination"></input>
+        <input type="text" id="newDestination" placeholder="Trip name"></input>
         <button id="addTrip" onClick={addTrip}>Add Trip</button>
       </div>
     );

@@ -38,7 +38,7 @@ app.get('/list?:trip_id',
   }
 );
 
-app.post('/list', 
+app.put('/list', 
   databaseController.updateList,
   (req, res) => {
     return res.status(200).json(res.locals.list);

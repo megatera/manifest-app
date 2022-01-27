@@ -73,7 +73,7 @@ databaseController.getList = async(req, res, next) => {
   try {
     const { trip_id } = req.query;
     const values = [trip_id];
-    const listQuery = 'SELECT items.name AS item, trip_lists.status AS status FROM items INNER JOIN trip_lists ON trip_lists.item_id = items._id WHERE trip_id = $1;'
+    const listQuery = 'SELECT items._id AS item_id, items.name AS item, trip_lists.status AS status FROM items INNER JOIN trip_lists ON trip_lists.item_id = items._id WHERE trip_id = $1;'
 
     const result = await db.query(listQuery, values);
     res.locals.list = result.rows;
@@ -94,7 +94,7 @@ databaseController.updateList = async(req, res, next) => {
     const updateQuery = 'UPDATE trip_lists SET status = $1 WHERE item_id = $2 AND trip_id = $3 RETURNING *;'
 
     const result = await db.query(updateQuery, values);
-    res.locals.list = result.rows;
+    res.locals.list = result.rows[0];
     next();
 
   } catch (err) {

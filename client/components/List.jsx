@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ListItem from './ListItem.jsx';
+import Inventory from './Inventory.jsx';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 class List extends Component {
   constructor() {
@@ -8,6 +10,7 @@ class List extends Component {
       user_id: 1,
       list_items: [],
       fetchedListItems: false,
+      showInventory: false,
     }
   }
 
@@ -44,14 +47,29 @@ class List extends Component {
     
     //TO DO: update query in controller to respond with item_id
     const listItems = list_items.map((list_item, i) => {
-      return <ListItem key={i} item={list_item.item} status={list_item.status}/>
+      return <ListItem key={i} trip_id={this.props.trip_id} item_id={list_item.item_id} item={list_item.item} status={list_item.status}/>
     });
     console.log(listItems);
+
+    const openInventory = (e) => {
+      console.log('clicked');
+      return this.setState({
+        showInventory: true,
+      })
+    }
+
+    if (this.state.showInventory) {
+      return(
+          <div>
+            <Inventory />
+          </div>
+      );
+    }
 
     return(
       <div>
         {listItems}
-        <button className="addItems">Add Items</button>
+        <button className="addItems" onClick={openInventory}>Add Items</button>
       </div>
     );
   }
