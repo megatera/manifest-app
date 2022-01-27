@@ -1,0 +1,76 @@
+body{
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  background-color: rgb(28, 28, 49);
+  color:rgb(172, 172, 212);
+  display: flex;
+  justify-content: center;
+}
+
+#logotype {
+  color: rgb(172, 172, 212);
+  font-family: 'Kumar One Outline', cursive;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  text-align: center;
+}
+
+.trip {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(42, 42, 71);
+  width: 500px;
+  height: 50px;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .03rem;
+  background-color: rgb(42, 42, 71);
+  color: rgb(172, 172, 212);
+  box-shadow: 1px 5px 5px rgb(21, 21, 37);
+}
+
+.tripContainer {
+  margin-bottom: 50px;
+}
+
+.addItems {
+  margin: 20px 0;
+  background-color: rgb(123, 219, 219);
+  color: rgb(42, 42, 71);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid rgb(123, 219, 219);
+  width: 25%;
+  padding: 7px 20px;
+}
+
+label {
+  color: rgb(123, 219, 219);
+  font-family: 'Roboto Mono', monospace;
+  padding-left: 5px;
+}
+
+input[type=text]{
+  background-color: rgba(55, 55, 77, 0.685);
+  box-shadow: none;
+  width: 75%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(78, 78, 110);
+}
+
+#addTrip {
+  padding: 7px 20px;
+  width: 20%;
+  background-color: royalblue;
+  border-radius: 5px;
+  border: 1px solid royalblue;
+  color: whitesmoke;
+  font-family: 'Heebo', sans-serif;
+}

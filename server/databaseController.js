@@ -53,12 +53,12 @@ databaseController.getTrips = async(req, res, next) => {
 
 databaseController.addTrip = async(req, res, next) => {
   try {
-    const { destination, user_id } = req.body;
+    const { destination } = req.body;
+    const { user_id } = req.query;
     const values = [destination, user_id];
-    const tripQuery = 'INSERT INTO trips VALUES (DEFAULT, $1, $2) RETURNING *;';
+    const tripQuery = 'INSERT INTO trips VALUES (DEFAULT, $1, $2)';
 
-    const result = await db.query(tripQuery, values);
-    res.locals.trips = result.rows;
+    await db.query(tripQuery, values);
     next();
     
   } catch (err) {
@@ -71,7 +71,7 @@ databaseController.addTrip = async(req, res, next) => {
 
 databaseController.getList = async(req, res, next) => {
   try {
-    const { trip_id } = req.body;
+    const { trip_id } = req.query;
     const values = [trip_id];
     const listQuery = 'SELECT items.name AS item, trip_lists.status AS status FROM items INNER JOIN trip_lists ON trip_lists.item_id = items._id WHERE trip_id = $1;'
 

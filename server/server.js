@@ -26,11 +26,12 @@ app.get('/trips?:user_id',
 
 app.post('/trips', 
 databaseController.addTrip,
+databaseController.getTrips,
   (req, res) => {
     return res.status(200).json(res.locals.trips);
   });
 
-app.get('/list', 
+app.get('/list?:trip_id', 
   databaseController.getList,
   (req, res) => {
     return res.status(200).json(res.locals.list);
