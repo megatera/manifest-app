@@ -18,6 +18,13 @@ app.get('/inventory?:category',
     return res.status(200).json(res.locals.inventory);
   });
 
+app.post('/inventory', 
+  databaseController.addItemsToList,
+  databaseController.getInventory,
+  (req, res) => {
+    return res.status(200).json(res.locals.inventory);
+  });
+
 app.get('/trips?:user_id', 
   databaseController.getTrips,
   (req, res) => {

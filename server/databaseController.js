@@ -4,13 +4,11 @@ const db = require('./databaseModels');
 const databaseController = {};
 
 databaseController.getInventory = async (req, res, next) => {
-  console.log('in get inventory');
   try {
-
     // define query
-    const { category } = req.query;
-    const values = [category];
-    const inventoryQuery = 'SELECT * FROM items WHERE category = $1;'
+    const { category, trip_id } = req.query;
+    const values = [category, trip_id];
+    const inventoryQuery = 'SELECT * FROM items WHERE category = $1 AND _id NOT IN(SELECT item_id FROM trip_lists WHERE trip_id = $2);'
 
     // store result in variable, await query
     const result = await db.query(inventoryQuery, values);
@@ -83,6 +81,33 @@ databaseController.getList = async(req, res, next) => {
     return next({
       log: `databaseController.getList ERROR: ${err}`,
       message: {err: 'Error in databaseController.getList. Check server logs for details.'}
+    });
+  }
+}
+
+databaseController.addItemsToList = async(req, res, next) => {
+  try {
+    let insertQuery = 'INSERT INTO trip_lists VALUES ';
+    const { trip_id, item_ids } = req.body;
+    const values = [trip_id];
+
+    // update insertQuery with item_ids from req.body
+    for (let i = 0; i < item_ids.length; i++) {
+      if (i === 0) {
+        insertQuery +=`($1 , ${item_ids[i]}, DEFAULT)`;
+      } else if (i === item_ids.length -1) {
+        insertQuery += `,($1 , ${item_ids[i]}, DEFAULT);`;
+      } else {
+      insertQuery +=`,($1 , ${item_ids[i]}, DEFAULT)`;
+      }
+    };
+
+    await db.query(insertQuery, values);
+    next();
+  } catch(err) {
+    return next({
+      log:`databaseController.addItemsToList ERROR: ${err}`,
+      message: {err: 'Error in databaseController.addItemsToList. Check server logs for details.'}
     });
   }
 }

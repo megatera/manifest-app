@@ -41,35 +41,19 @@ class List extends Component {
     if (!list_items.length) return (
       <div>
         <p>You don't have any items in your list yet.</p>
-        <button className="addItems">Add Items</button>
+        <Link to="/inventory" state={{trip_id: this.props.trip_id}}><button className="addItems">Add Items</button></Link>
       </div>
     )
     
-    //TO DO: update query in controller to respond with item_id
     const listItems = list_items.map((list_item, i) => {
       return <ListItem key={i} trip_id={this.props.trip_id} item_id={list_item.item_id} item={list_item.item} status={list_item.status}/>
     });
     console.log(listItems);
 
-    const openInventory = (e) => {
-      console.log('clicked');
-      return this.setState({
-        showInventory: true,
-      })
-    }
-
-    if (this.state.showInventory) {
-      return(
-          <div>
-            <Inventory />
-          </div>
-      );
-    }
-
     return(
       <div>
         {listItems}
-        <button className="addItems" onClick={openInventory}>Add Items</button>
+        <Link to="/inventory" state={{trip_id: this.props.trip_id}}><button className="addItems" >Add Items</button></Link>
       </div>
     );
   }

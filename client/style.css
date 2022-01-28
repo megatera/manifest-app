@@ -7,6 +7,10 @@ body {
   justify-content: center;
 }
 
+p {
+  width: 500px;
+}
+
 #logotype {
   color: rgb(172, 172, 212);
   font-family: 'Kumar One Outline', cursive;
@@ -45,6 +49,11 @@ body {
   border: 1px solid rgb(123, 219, 219);
   width: 25%;
   padding: 7px 20px;
+}
+
+.addItems:disabled {
+  background-color: rgb(80, 146, 146);
+  border: 1px solid rgb(80, 146, 146);
 }
 
 label {
@@ -92,6 +101,11 @@ input[type=checkbox]:checked + label.strikethrough{
   font-family: 'Heebo', sans-serif;
 }
 
+#addTrip:disabled {
+  background-color: rgb(153, 133, 18);
+  border: 1px solid rgb(153, 133, 18);
+}
+
 .listItem {
   display: flex;
   align-items: center;
@@ -101,13 +115,53 @@ input[type=checkbox]:checked + label.strikethrough{
 .inventory {
   width: 100%;
   height: 100%;
-  background-color: rgb(21, 21, 37);
 }
 
 #category {
   width: 500px;
-  height: 20px;
+  height: 35px;
   border-radius: 5px;
   background-color: rgba(55, 55, 77, 0.685);
   color:rgb(172, 172, 212);
+  padding: 7px 20px;
+  margin: 20px 0;
+}
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+}
+
+#close {
+  margin: 20px 0;
+  background-color: rgb(42, 42, 71);
+  color: rgb(172, 172, 212);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  border-radius: 5px;
+  border: 1px solid rgb(172, 172, 212);
+  padding: 7px 20px;
+}
+
+.inventoryItem {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+#selectAll {
+  margin: 20px 10px;
+  background-color: rgb(42, 42, 71);
+  color: rgb(172, 172, 212);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  border-radius: 5px;
+  border: 1px solid rgb(172, 172, 212);
+  padding: 7px 20px;
+}
+
+.subNav {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
 }

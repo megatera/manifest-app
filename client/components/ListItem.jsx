@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+//TO DO: unmap trip_id, item, and item_id; make sure to update references in render method below
 class ListItem extends Component {
   constructor(props) {
     super(props);
@@ -40,14 +41,6 @@ class ListItem extends Component {
         .catch(err => console.log('ListItem.checkUncheck: PUT request: ERROR: ', err));
     }
 
-    // if (this.props.status === true) {
-    //   return (
-    //     <div className="listItem">
-    //       <input type="checkbox" name={this.props.item} onClick={checkUncheck} defaultChecked={this.props.status}></input>
-    //       <label htmlFor={this.props.item} className="strikethrough">{this.props.item}</label>
-    //     </div>
-    //   )
-    // } 
     return (
       <div className="listItem">
         <input type="checkbox" name={this.state.item} onClick={checkUncheck} defaultChecked={this.state.status}></input>
