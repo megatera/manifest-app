@@ -29,7 +29,7 @@ p {
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;
-  letter-spacing: .03rem;
+  letter-spacing: .2rem;
   background-color: rgb(42, 42, 71);
   color: rgb(218, 188, 23);
   box-shadow: 1px 5px 5px rgb(21, 21, 37);
@@ -164,4 +164,15 @@ input[type=checkbox]:checked + label.strikethrough{
   display: flex;
   justify-content: flex-end;
   width: 90%;
+}
+
+#delete {
+  margin: 20px 10px;
+  background-color: rgb(42, 42, 71);
+  color: rgb(172, 172, 212);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  border-radius: 5px;
+  border: 1px solid rgb(172, 172, 212);
+  padding: 7px 20px;
 }

@@ -54,6 +54,7 @@ class List extends Component {
       <div>
         {listItems}
         <Link to="/inventory" state={{trip_id: this.props.trip_id}}><button className="addItems" >Add Items</button></Link>
+        <button id="delete">Delete Items</button>
       </div>
     );
   }

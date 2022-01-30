@@ -86,7 +86,7 @@ class Trips extends Component {
 
     return(
       <div className="tripContainer">
-        <h3>Upcoming Trips</h3>
+        <h4>Upcoming Trips</h4>
         {tripBoxes}
         <input type="text" id="newDestination" placeholder="Trip name" onChange={disableAddButton}></input>
         <button id="addTrip" onClick={addTrip} disabled={this.state.addButtonDisabled} >Add Trip</button>
