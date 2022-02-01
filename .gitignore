@@ -1,3 +1,4 @@
 .vscode/
 node_modules/
-package-lock.jsonserver/databaseModels.js
+package-lock.json
+.env
